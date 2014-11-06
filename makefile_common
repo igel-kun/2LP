@@ -1,0 +1,6 @@
+#CFLAGS=-march=native -msahf -O3 -pipe -floop-interchange -floop-strip-mine -floop-block -fweb -frename-registers  -fgraphite-identity  -fomit-frame-pointer
+CFLAGS=-march=native -O3 -Wall
+
+%.o: %.hpp %.cpp *.hpp *.cpp ../util/*.hpp ../util/*.cpp
+	g++ ${CFLAGS} -std=c++0x -c $(@:.o=.cpp) -o $@ 2>&1 | tee error.log 
+
